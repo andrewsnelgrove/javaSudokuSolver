@@ -12,7 +12,6 @@ class SmallestSudokuSquare
     //Initializer
     public SmallestSudokuSquare(int row, int column)
     {
-        gridIdentifier = -1;
         rowNumber = row;
         columnNumber = column;
         blockNumber = -1;
