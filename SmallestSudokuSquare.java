@@ -1,6 +1,6 @@
 import java.util.ArrayList
 
-class SmallestSudokuSquare
+public class SmallestSudokuSquare
 {
     //Fields
     private int rowNumber;
@@ -10,7 +10,8 @@ class SmallestSudokuSquare
     private ArrayList<int> possibleAnswers;
 
     //Initializer
-    public SmallestSudokuSquare(int row, int column)
+
+    public SmallestSudokuSquare(int row, int column, int blockNumber)
     {
         rowNumber = row;
         columnNumber = column;
@@ -27,7 +28,7 @@ class SmallestSudokuSquare
         return BlockNumber;
     }
 
-    public int getSmallSquareAns()
+    public int getAns()
     {
         return answer;
     }
@@ -38,8 +39,6 @@ class SmallestSudokuSquare
     }
 
     //Manipulators
-
-
 
     public void changeBlockNumber(int newBlockNumber)
     {
