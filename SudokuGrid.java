@@ -46,11 +46,20 @@ public class SudokuGrid
     }
     //Methods
 
-
-    public void addAnswer(int squareID, int answer)
+    /**
+     * This function takes a square ID and answer for the square, and changes the current answer of the square to the
+     * given answer.
+     * @param squareID: An integer between 0 and 80 inclusive that represents the number of the small squares on the
+     *                sudoku grid. The numbering starts at 0 in the top leftmost square on the grid, then counts left
+     *                to the end of the row, then down the next row, etc., until one hits the bottom rightmost square
+     *                on the grid.
+     * @param answer: An integer between 1 and 9 inclusive that represents the one answer for a small square on the
+     *              sudoku grid.
+     */
+    public void changeAns(int squareID, int answer)
     {
-        //BOX 0
-        //Top Row
+        /*-----------------------------------BOX 0-------------------------------------*/
+        /*----------------------------------Top Row------------------------------------*/
         if (squareID == 0){
             theSudokuGrid.get(0).getSmallSquare(0).changeAnswer(answer);
         }
@@ -80,7 +89,6 @@ public class SudokuGrid
         else if (squareID == 20){
             theSudokuGrid.get(0).getSmallSquare(8).changeAnswer(answer);
         }
-        /** *********************/
         //BOX 1
         //Top Row
         else if (squareID == 3){
@@ -197,18 +205,167 @@ public class SudokuGrid
             theSudokuGrid.get(4).getSmallSquare(5).changeAnswer(answer);
         }
         //LAST STOPPED HERE
-        else if (squareID == 20){
-            theSudokuGrid.get(0).getSmallSquare(8).changeAnswer(answer);
+        else if (squareID == 48){
+            theSudokuGrid.get(4).getSmallSquare(6).changeAnswer(answer);
         }
-        else if (squareID == 20){
-            theSudokuGrid.get(0).getSmallSquare(8).changeAnswer(answer);
+        else if (squareID == 49){
+            theSudokuGrid.get(4).getSmallSquare(7).changeAnswer(answer);
         }
 
+        else if (squareID == 50){
+            theSudokuGrid.get(4).getSmallSquare(8).changeAnswer(answer);
+        }
+        //BOX 5
+        //Top Row
+        else if (squareID == 33){
+            theSudokuGrid.get(5).getSmallSquare(0).changeAnswer(answer);
+        }
 
+        else if (squareID == 34){
+            theSudokuGrid.get(5).getSmallSquare(1).changeAnswer(answer);
+        }
+
+        else if (squareID == 35){
+            theSudokuGrid.get(5).getSmallSquare(2).changeAnswer(answer);
+        }
+        //Mid Row
+        else if (squareID == 42){
+            theSudokuGrid.get(5).getSmallSquare(3).changeAnswer(answer);
+        }
+
+        else if (squareID == 43){
+            theSudokuGrid.get(5).getSmallSquare(4).changeAnswer(answer);
+        }
+
+        else if (squareID == 44){
+            theSudokuGrid.get(5).getSmallSquare(5).changeAnswer(answer);
+        }
+        //Bottom Row
+        else if (squareID == 51){
+            theSudokuGrid.get(5).getSmallSquare(6).changeAnswer(answer);
+        }
+
+        else if (squareID == 52){
+            theSudokuGrid.get(5).getSmallSquare(7).changeAnswer(answer);
+        }
+
+        else if (squareID == 53){
+            theSudokuGrid.get(5).getSmallSquare(8).changeAnswer(answer);
+        }
+        //BOX 6
+        //Top Row
+        else if (squareID == 54){
+            theSudokuGrid.get(6).getSmallSquare(0).changeAnswer(answer);
+        }
+        else if (squareID == 55){
+            theSudokuGrid.get(6).getSmallSquare(1).changeAnswer(answer);
+        }
+
+        else if (squareID == 56){
+            theSudokuGrid.get(6).getSmallSquare(2).changeAnswer(answer);
+        }
+        //Mid Row
+        else if (squareID == 63){
+            theSudokuGrid.get(6).getSmallSquare(3).changeAnswer(answer);
+        }
+
+        else if (squareID == 64){
+            theSudokuGrid.get(6).getSmallSquare(4).changeAnswer(answer);
+        }
+
+        else if (squareID == 65){
+            theSudokuGrid.get(6).getSmallSquare(5).changeAnswer(answer);
+        }
+        //Bottom Row
+        else if (squareID == 72){
+            theSudokuGrid.get(6).getSmallSquare(6).changeAnswer(answer);
+        }
+
+        else if (squareID == 73){
+            theSudokuGrid.get(6).getSmallSquare(7).changeAnswer(answer);
+        }
+
+        else if (squareID == 74){
+            theSudokuGrid.get(6).getSmallSquare(8).changeAnswer(answer);
+        }
+        //BOX 7
+        //Top Row
+        else if (squareID == 57){
+            theSudokuGrid.get(7).getSmallSquare(0).changeAnswer(answer);
+        }
+
+        else if (squareID == 58){
+            theSudokuGrid.get(7).getSmallSquare(1).changeAnswer(answer);
+        }
+
+        else if (squareID == 59){
+            theSudokuGrid.get(7).getSmallSquare(2).changeAnswer(answer);
+        }
+        //Mid Row
+        else if (squareID == 66){
+            theSudokuGrid.get(7).getSmallSquare(3).changeAnswer(answer);
+        }
+
+        else if (squareID == 67){
+            theSudokuGrid.get(7).getSmallSquare(4).changeAnswer(answer);
+        }
+
+        else if (squareID == 68){
+            theSudokuGrid.get(7).getSmallSquare(5).changeAnswer(answer);
+        }
+        //Bottom Row
+        else if (squareID == 75){
+            theSudokuGrid.get(7).getSmallSquare(6).changeAnswer(answer);
+        }
+
+        else if (squareID == 76){
+            theSudokuGrid.get(7).getSmallSquare(7).changeAnswer(answer);
+        }
+
+        else if (squareID == 77){
+            theSudokuGrid.get(7).getSmallSquare(8).changeAnswer(answer);
+        }
+        //BOX 8
+        //Top Row
+        else if (squareID == 60){
+            theSudokuGrid.get(8).getSmallSquare(0).changeAnswer(answer);
+        }
+
+        else if (squareID == 61){
+            theSudokuGrid.get(8).getSmallSquare(1).changeAnswer(answer);
+        }
+
+        else if (squareID == 62){
+            theSudokuGrid.get(8).getSmallSquare(2).changeAnswer(answer);
+        }
+        //Mid Row
+        else if (squareID == 69){
+            theSudokuGrid.get(8).getSmallSquare(3).changeAnswer(answer);
+        }
+
+        else if (squareID == 70){
+            theSudokuGrid.get(8).getSmallSquare(4).changeAnswer(answer);
+        }
+
+        else if (squareID == 71){
+            theSudokuGrid.get(8).getSmallSquare(5).changeAnswer(answer);
+        }
+        //Bottom Row
+        else if (squareID == 78){
+            theSudokuGrid.get(8).getSmallSquare(6).changeAnswer(answer);
+        }
+
+        else if (squareID == 79){
+            theSudokuGrid.get(8).getSmallSquare(7).changeAnswer(answer);
+        }
+
+        else if (squareID == 80){
+            theSudokuGrid.get(8).getSmallSquare(8).changeAnswer(answer);
+        }
     }
 
 
-    public ... getBox() 
+
 
     public boolean isSudokuGridFull()
     {
@@ -224,7 +381,7 @@ public class SudokuGrid
     }
 
 
-    public boolean numberIsInRowAnswer(int row, int number)
+    public boolean isNumInRowAns(int row, int number)
     {
         if (row < 3)
         {
@@ -262,4 +419,5 @@ public class SudokuGrid
 
     public boolean numberIsInBoxPossibilities
 
+    public ... getBox()
 }
