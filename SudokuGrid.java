@@ -65,7 +65,7 @@ public class SudokuGrid {
      * @return true if whole grid is filled with one answer for every square, false if not.
      */
     public boolean isGridFull() {
-        for (SudokuBox box : theSudokuGrid) {
+        for (SudokuBox box : this.theSudokuGrid) {
             if (box.isFull() == false) {
                 return false;
             }
@@ -92,11 +92,23 @@ public class SudokuGrid {
      * This function prints to the terminal the current solved sudoku grid.
      */
     public void printAnswersGrid(){
-        for (i = 0; i <= 80; i++){
+        int ansToPrint;
 
+        int counter = 0;
+
+        for (int i = 0; i <= 80; i++){
+            if (counter == 9){
+                System.out.println();
+                counter = 0;
+            }
+            ansToPrint = navToSquare(i).getAnswer();
+
+            System.out.print( "   " + String.valueOf(ansToPrint) + "   " );
+
+            counter += 1;
 
         }
-        System.out.println();
+
 
     }
 
@@ -133,6 +145,7 @@ public class SudokuGrid {
         //Top Row
         else if (squareID == 3 || squareID == 4 || squareID == 5 ) {
             return theSudokuGrid.get(1).getSmallSquare(squareID - 3);
+        }
 
         //Mid Row
 
@@ -231,15 +244,16 @@ public class SudokuGrid {
             return theSudokuGrid.get(8).getSmallSquare(squareID - 66);
         }
         //Bottom Row
-        else if (squareID == 78 || squareID == 79 || squareID == 80) {
+        else //if (squareID == 78 || squareID == 79 || squareID == 80) {
             return theSudokuGrid.get(8).getSmallSquare(squareID - 73);
         }
-    }
+
+
 
     public void addPossibilities(int squareID, int possAns){
             navToSquare(squareID).addPossibleAnswer(possAns);
         }
-    }
+
 
 
 
@@ -253,41 +267,33 @@ public class SudokuGrid {
         navToSquare(squareID).removePossibleAnswer(possToRemove);
     }
 
-
+/*
 
     public boolean isNumInRowAns(int row, int number)
     {
-        if row == 0:
-            for (int i = 0; i <= 8; i++){
+        if (row == 0) {
+            for (int i = 0; i <= 8; i++) {
                 int answer = navToSquare(i).getAnswer();
                 if (number == answer) {
                     return True;
                 }
-        if row = 1:
-                for (int i = 9; i <= 17; i++){
-                    int answer = navToSquare(i).getAnswer();
-                    if (number == answer) {
-                        return True;
-                    }
-
-
-
-
-
-
-
             }
-
-
-            )
-
-
+        }
+        if (row = 1) {
+            for (int i = 9; i <= 17; i++) {
+                int answer = navToSquare(i).getAnswer();
+                if (number == answer) {
+                    return True;
+                }
             }
+        }
+
+
         return False;
 
+*/
 
 
-    }
         /*
         if (row < 3)
         {
