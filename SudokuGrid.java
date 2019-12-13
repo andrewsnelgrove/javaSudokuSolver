@@ -309,21 +309,21 @@ public class SudokuGrid {
     }
 
     private boolean isNumInRowPossibility(int numberToCheck, int rowToCheck){
-            int squareID = mapRowStartToSquareID(rowToCheck);
-            ArrayList<Integer> possAnsList;
+        int squareID = mapRowStartToSquareID(rowToCheck);
+        ArrayList<Integer> possAnsList;
 
-            for (int column = 0; column <= 8; column++) {
-                possAnsList = navToSquare(squareID).getPossibleAnswers();
-                if (possAnsList.size() != 0 ) {
-                    for (int k = 0; k < possAnsList.size(); k++) {
-                        if (numberToCheck == possAnsList.get(k)) {
-                            return True;
+        for (int column = 0; column <= 8; column++) {
+            possAnsList = navToSquare(squareID).getPossibleAnswers();
+            if (possAnsList.size() != 0 ) {
+                for (int k = 0; k < possAnsList.size(); k++) {
+                    if (numberToCheck == possAnsList.get(k)) {
+                        return True;
                         }
                     }
                 }
-                squareID += 1;
+            squareID += 1;
                 }
-            return False; //Check this.
+        return False; //Check this.
                 
 
             }
@@ -339,6 +339,24 @@ public class SudokuGrid {
             }
             return False;
         }
+    }
+
+    private boolean isNumInColPossibility(int numberToCheck, int columnToCheck) {
+        int squareID = mapColumnStartToSquareID(columnToCheck);
+        ArrayList<Integer> possAnsList;
+
+        for (int row = 0; row <=8; row++){
+            possAnsList = navToSquare(squareID).getPossibleAnswers();
+            if (possAnsList.size() != 0) {
+                for (int k = 0; k < possAnsList.size(); k++){
+                    if (numberToCheck == possAnsList.get(k)){
+                        return True;
+                    }
+                }
+            }
+            squareID += 9; //We are going down the column, so it's plus 9 every time.
+        }
+        return False;//Check this.
     }
 
      //END CLASS CLOSING
