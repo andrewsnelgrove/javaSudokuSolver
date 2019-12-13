@@ -298,16 +298,52 @@ public class SudokuGrid {
     private boolean isNumInRow(int numberToCheck, int rowToCheck) {
         int squareID = mapRowStartToSquareID(rowToCheck);
 
-        for (int column = 0; column <= 8; column++){
-            if (numberToCheck == navToSquare(squareID).getAnswer() ){
+        for (int column = 0; column <= 8; column++) {
+            if (numberToCheck == navToSquare(squareID).getAnswer()) {
                 return True;
-            }
-            else {
+            } else {
                 squareID += 1;
             }
-        return False;
+            return False;
+        }
     }
-        
+
+    private boolean isNumInRowPossibility(int numberToCheck, int rowToCheck){
+            int squareID = mapRowStartToSquareID(rowToCheck);
+            ArrayList<Integer> possAnsList;
+
+            for (int column = 0; column <= 8; column++) {
+                possAnsList = navToSquare(squareID).getPossibleAnswers();
+                if (possAnsList.size() != 0 ) {
+                    for (int k = 0; k < possAnsList.size(); k++) {
+                        if (numberToCheck == possAnsList.get(k)) {
+                            return True;
+                        }
+                    }
+                }
+                squareID += 1;
+                }
+            return False; //Check this.
+                
+
+            }
+
+    private boolean isNumInCol(int numberToCheck, int columnToCheck) {
+        int squareID = mapColumnStartToSquareID(columnToCheck);
+
+        for (int row = 0; row <= 8; row++) {
+            if ( numberToCheck == navToSquare(squareID).getAnswer() ) {
+                return True;
+            } else {
+                squareID += 9; //We are going down the column, so it's plus 9 every time.
+            }
+            return False;
+        }
+    }
+
+     //END CLASS CLOSING
+    }
+
 
 
 
