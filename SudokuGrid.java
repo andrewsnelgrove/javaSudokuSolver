@@ -295,11 +295,21 @@ public class SudokuGrid {
 
 
 
-    private boolean isNumInRow(int numberToCheck, int rowToCheck):
-        for (int column = 0; column <= 8; column++){
-            if (numberToCheck == )
+    private boolean isNumInRow(int numberToCheck, int rowToCheck) {
+        int squareID = mapRowStartToSquareID(rowToCheck);
 
+        for (int column = 0; column <= 8; column++){
+            if (numberToCheck == navToSquare(squareID).getAnswer() ){
+                return True;
+            }
+            else {
+                squareID += 1;
+            }
+        return False;
     }
+        
+
+
 
 
 
