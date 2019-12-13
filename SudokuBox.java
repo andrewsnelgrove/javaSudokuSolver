@@ -120,4 +120,19 @@ public class SudokuBox
         }
     }
 
+    
+    public boolean isNumInBoxPossibility(int numberToCheck) {
+        ArrayList<Integer> possAnsList;
+        for (SmallestSudokuSquare smallSquare : this.sudokuBox) {
+            possAnsList = smallSquare.getPossibleAnswers();
+            if (possAnsList.size() != 0) {
+                for (int k = 0; k < possAnsList.size(); k++){
+                    if (possAnsList.get(k) == numberToCheck) {
+                        return True;
+                    }
+                }
+            }
+        }
+        return False;
+    }
 }
