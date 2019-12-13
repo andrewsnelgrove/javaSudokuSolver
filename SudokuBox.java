@@ -110,6 +110,14 @@ public class SudokuBox
         return true;
     }
 
+    public boolean isNumberInBox(int numberToCheck) {
+        for (SmallestSudokuSquare smallSquare : this.sudokuBox) {
+            if (smallSquare.getAnswer() == numberToCheck) {
+                return True;
+            }
+            return False;
 
+        }
+    }
 
 }
