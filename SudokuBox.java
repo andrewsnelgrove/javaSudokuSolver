@@ -120,7 +120,7 @@ public class SudokuBox
         }
     }
 
-    
+
     public boolean isNumInBoxPossibility(int numberToCheck) {
         ArrayList<Integer> possAnsList;
         for (SmallestSudokuSquare smallSquare : this.sudokuBox) {
@@ -134,5 +134,20 @@ public class SudokuBox
             }
         }
         return False;
+    }
+
+    public boolean isWholeBoxSolved(){
+        int filledCount = 0;
+        for (SmallestSudokuSquare smallSquare : this.sudokuBox){
+            if (smallSquare.getAnswer() != -1){
+                filledCount += 1;
+            }
+        }
+        if (filledCount == 9){
+            return True;
+        }
+        else {
+            return False;
+        }
     }
 }
