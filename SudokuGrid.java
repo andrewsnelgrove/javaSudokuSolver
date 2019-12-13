@@ -275,20 +275,25 @@ public class SudokuGrid {
 
     }
 
-    private void mapRowStartToSquareID(int rowNumber){
+    private int mapRowStartToSquareID(int rowNumber){
 
-        if (rowNumber == 0) { return 0 }
-        else if (rowNumber == 1) { return 9 }
-        else if (rowNumber == 2) { return 18 }
-        else if (rowNumber == 3) { return 27 }
-        else if (rowNumber == 4) { return 36}
-        else if (rowNumber == 5) { return 45}
-        else if (rowNumber == 6) { return 54}
-        else if (rowNumber == 7) { return 63}
-        else if (rowNumber == 8) { return 72}_
+        if (rowNumber == 0) { return 0; }
+        else if (rowNumber == 1) { return 9; }
+        else if (rowNumber == 2) { return 18; }
+        else if (rowNumber == 3) { return 27; }
+        else if (rowNumber == 4) { return 36; }
+        else if (rowNumber == 5) { return 45; }
+        else if (rowNumber == 6) { return 54; }
+        else if (rowNumber == 7) { return 63; }
+        else if (rowNumber == 8) { return 72; }
 
-        }
     }
+
+    private int mapColumnStartToSquareID(int columnNumber){
+        return columnNumber;
+    }
+
+
 
     private boolean isNumInRow(int numberToCheck, int rowToCheck):
         for (int column = 0; column <= 8; column++){
