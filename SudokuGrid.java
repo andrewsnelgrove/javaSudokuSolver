@@ -289,6 +289,27 @@ public class SudokuGrid {
 
     }
 
+    /**
+     * This function converts a squareID in the sudoku grid to the row number of the grid.
+     * @param squareID: An integer between 0 and 80 inclusive that represents a small square of the
+     *                sudoku grid.
+     * @return An integer between 0 and 8 inclusive that represents the row number on the sudoku grid
+     *         where the small square with the squareID is located.
+     */
+
+    private int mapSquareIDtoRowNumber(int squareID){
+        if      (squareID >= 0 && squareID <= 8){ return 0; }
+        else if (squareID >= 9 && squareID <= 17) { return 1; }
+        else if (squareID >= 18 && squareID <= 26) { return 2; }
+        else if (squareID >= 27 && squareID <= 35) {return 3;}
+        else if (squareID >= 36 && squareID <= 44) {return 4;}
+        else if (squareID >= 45 && squareID <= 53) {return 5;}
+        else if (squareID >= 54 && squareID <= 62) {return 6;}
+        else if (squareID >= 63 && squareID <= 71) {return 7;}
+        else if (squareID >= 72 && squareID <= 80) {return 8;}
+        
+    }
+
     private int mapColumnStartToSquareID(int columnNumber){
         return columnNumber;
     }
@@ -357,6 +378,56 @@ public class SudokuGrid {
             squareID += 9; //We are going down the column, so it's plus 9 every time.
         }
         return False;//Check this.
+    }
+
+///
+    public void solveGrid(){
+
+        //First, make all the possibilities for every small square in the grid for the first time.
+
+        //Write the possibilties for every square row by row.
+        //First check, what answers are in the row, what answers are in the column, and what answers are in the box. Do
+        //not write duplicates.
+
+        for (int squareNumber = 0; squareNumber <= 80; squareNumber++) { //For every square in the grid...
+            ArrayList<Integer> rowAnswers = ArrayList<Integer>(); //make an empty row answer list...
+            ArrayList<Integer> columnAnswers = ArrayList<Integer>();//make an empty column answer list...
+            ArrayList<Integer> boxAnswers = ArrayList<Integer>();//make an empty box answer list...
+
+            //First get row answers
+            for (int numberToCheck = 1; numberToCheck <= 9; numberToCheck++){ //For every potential answer (1 - 9)
+                if (navToSquare(squareNumber).getAnswer() == numb)//See if that number is in the row of the square
+
+            }
+        }
+
+
+
+
+
+
+
+        //Then, if any possibility in any square is 1, then that is the answer for that square. Write it as
+        //that square's answer. (When you write an answer to a square, make sure you eliminate it from the
+        //row, column and box possibilities for every small square.) Then, recheck if any possibility in the square is one.
+        //IF NOT:
+        //Then see if there is a unique number in the possibility for row, column, and box. If yes, then that is the answer
+        //for that square. Use the function to write the answer to the grid and eliminating it from the other possibilities.
+
+        boolean box0Solved = False;
+        boolean box1Solved = False;
+        boolean box2Solved = False;
+        boolean box3Solved = False;
+        boolean box4Solved = False;
+        boolean box5Solved = False;
+        boolean box6Solved = False;
+        boolean box7Solved = False;
+        boolean box8Solved = False;
+        //FINISH
+
+        
+
+
     }
 
      //END CLASS CLOSING
