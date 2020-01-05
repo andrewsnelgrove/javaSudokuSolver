@@ -1,9 +1,21 @@
-package com.andrewsnelgrove;
+package com.javaSudokuSolverPackage;
 
-import java.util.ArrayList;
+import java.util.*;
+
 
 public class SudokuGrid {
     //Fields
+    private static final Set<Integer> column0 = new HashSet<Integer>(Arrays.asList(0,  9, 18, 27, 36, 45, 54, 63, 72));
+    private static final Set<Integer> column1 = new HashSet<Integer>(Arrays.asList(1, 10, 19, 28, 37, 46, 55, 64, 73));
+    private static final Set<Integer> column2 = new HashSet<Integer>(Arrays.asList(2, 11, 20, 29, 38, 47, 56, 65, 74));
+    private static final Set<Integer> column3 = new HashSet<Integer>(Arrays.asList(3, 12, 21, 30, 39, 48, 57, 66, 75));
+    private static final Set<Integer> column4 = new HashSet<Integer>(Arrays.asList(4, 13, 22, 31, 40, 49, 58, 67, 76));
+    private static final Set<Integer> column5 = new HashSet<Integer>(Arrays.asList(5, 14, 23, 32, 41, 50, 59, 68, 77));
+    private static final Set<Integer> column6 = new HashSet<Integer>(Arrays.asList(6, 15, 24, 33, 42, 51, 60, 69, 78));
+    private static final Set<Integer> column7 = new HashSet<Integer>(Arrays.asList(7, 16, 25, 34, 43, 52, 61, 70, 79));
+    private static final Set<Integer> column8 = new HashSet<Integer>(Arrays.asList(8, 17, 26, 35, 44, 53, 62, 71, 80));
+
+
     private ArrayList<SudokuBox> theSudokuGrid;
 
     private SudokuBox sudokuBox_0;
@@ -15,6 +27,8 @@ public class SudokuGrid {
     private SudokuBox sudokuBox_6;
     private SudokuBox sudokuBox_7;
     private SudokuBox sudokuBox_8;
+
+
 
     //Initializer
     public SudokuGrid() {
@@ -42,6 +56,9 @@ public class SudokuGrid {
         this.theSudokuGrid.add(this.sudokuBox_7);
         this.theSudokuGrid.add(this.sudokuBox_8);
     }
+
+
+
     //Methods
 
     /**
@@ -112,9 +129,46 @@ public class SudokuGrid {
 
     }
 
-    public void printPossibilitiesGrid(){
+    public String getStringAnswerGrid() {
+        int ansToDisplay;
+        String answerGridToDisplay = "";
+
+        int counter = 0;
+
+        for (int i = 0; i <= 80; i++) {
+            if (counter == 9) {
+                answerGridToDisplay += System.lineSeparator();
+                counter = 0;
+            }
+            ansToDisplay = navToSquare(i).getAnswer();
+
+            answerGridToDisplay += ("   " + String.valueOf(ansToDisplay) + "   ");
+
+            counter += 1;
 
 
+        }
+        return answerGridToDisplay;
+    }
+
+    public void printPossibilitiesGrid() {
+        //int[] possArrayToPrint = new int[];
+
+        int counter = 0;
+
+        for (int i = 0; i <= 80; i++) {
+            if (counter == 9) {
+                System.out.println();
+                counter = 0;
+            }
+           // possArrayToPrint = navToSquare(i).getPossibleAnswers().toArray();
+
+            System.out.print("   " + Arrays.toString( navToSquare(i).getPossibleAnswers().toArray() )  + "   ");
+
+            counter += 1;
+
+
+        }
     }
 
     /**
@@ -126,24 +180,24 @@ public class SudokuGrid {
      *                       on the grid.
      * @return Returns the square object found at that squareID in the sudoku grid. **CHECK**
      */
-    private SmallestSudokuSquare navToSquare(int squareID){
+    private SmallestSudokuSquare navToSquare(int squareID) {
         /*-----------------------------------BOX 0-------------------------------------*/
         /*----------------------------------Top Row------------------------------------*/
 
-        if (squareID == 0 || squareID == 1 || squareID == 2 ) {
-            return theSudokuGrid.get(0).getSmallSquare( squareID );
+        if (squareID == 0 || squareID == 1 || squareID == 2) {
+            return theSudokuGrid.get(0).getSmallSquare(squareID);
         }
         //Mid Row
-        else if (squareID == 9 || squareID == 10 || squareID == 11 ) {
-            return theSudokuGrid.get(0).getSmallSquare( squareID - 6 );
+        else if (squareID == 9 || squareID == 10 || squareID == 11) {
+            return theSudokuGrid.get(0).getSmallSquare(squareID - 6);
         }
         //Bottom Row
         else if (squareID == 18 || squareID == 19 || squareID == 20) {
-            return theSudokuGrid.get(0).getSmallSquare(squareID - 12 );
+            return theSudokuGrid.get(0).getSmallSquare(squareID - 12);
         }
         //BOX 1
         //Top Row
-        else if (squareID == 3 || squareID == 4 || squareID == 5 ) {
+        else if (squareID == 3 || squareID == 4 || squareID == 5) {
             return theSudokuGrid.get(1).getSmallSquare(squareID - 3);
         }
 
@@ -163,10 +217,10 @@ public class SudokuGrid {
         }
         //Mid Row
         else if (squareID == 15 || squareID == 16 || squareID == 17) {
-            return theSudokuGrid.get(2).getSmallSquare(squareID - 12 );
+            return theSudokuGrid.get(2).getSmallSquare(squareID - 12);
         }
         //Bottom Row
-        else if (squareID == 24 || squareID == 25 || squareID == 26 ) {
+        else if (squareID == 24 || squareID == 25 || squareID == 26) {
             return theSudokuGrid.get(2).getSmallSquare(squareID - 18);
         }
         //BOX 3
@@ -244,9 +298,12 @@ public class SudokuGrid {
             return theSudokuGrid.get(8).getSmallSquare(squareID - 66);
         }
         //Bottom Row
-        else //if (squareID == 78 || squareID == 79 || squareID == 80) {
-            return theSudokuGrid.get(8).getSmallSquare(squareID - 73);
+        else /*if (squareID == 78 || squareID == 79 || squareID = 80)*/
+            { //Is this else ok?//TODO Note this.
+            return theSudokuGrid.get(8).getSmallSquare(squareID - 72);//TODO OFF BY ONE! WAS 73 now 72.
         }
+
+    }//TODO Added this later because of else {.
 
 
 
@@ -285,8 +342,26 @@ public class SudokuGrid {
         else if (rowNumber == 5) { return 45; }
         else if (rowNumber == 6) { return 54; }
         else if (rowNumber == 7) { return 63; }
-        else if (rowNumber == 8) { return 72; }
+        else { return 72; } //Ok for last?
 
+    }
+
+    /**
+     * This function returns the column number that the squareID belongs.
+     * @param squareID: An integer between 0 and 80 inclusive that represents the ID of the small square on a Sudoku grid.
+     * @return An integer representing the column number between 0 and 8 inclusive that the small square with the squareID belongs to
+     *         in a sudoku grid.
+     */
+    private int mapSquareIDtoColumn(int squareID){
+        if (column0.contains(squareID)){ return 0; }
+        else if (column1.contains(squareID)){ return 1; }
+        else if (column2.contains(squareID)){ return 2; }
+        else if (column3.contains(squareID)){ return 3; }
+        else if (column4.contains(squareID)){ return 4; }
+        else if (column5.contains(squareID)){ return 5; }
+        else if (column6.contains(squareID)){ return 6; }
+        else if (column7.contains(squareID)){ return 7; }
+        else { return 8; } //Ok for return?
     }
 
     /**
@@ -306,9 +381,13 @@ public class SudokuGrid {
         else if (squareID >= 45 && squareID <= 53) {return 5;}
         else if (squareID >= 54 && squareID <= 62) {return 6;}
         else if (squareID >= 63 && squareID <= 71) {return 7;}
-        else if (squareID >= 72 && squareID <= 80) {return 8;}
+        else {return 8;} //Ok for last?
         
     }
+
+    /**
+
+     */
 
     private int mapColumnStartToSquareID(int columnNumber){
         return columnNumber;
@@ -321,12 +400,12 @@ public class SudokuGrid {
 
         for (int column = 0; column <= 8; column++) {
             if (numberToCheck == navToSquare(squareID).getAnswer()) {
-                return True;
+                return true;
             } else {
                 squareID += 1;
             }
-            return False;
         }
+        return false;
     }
 
     private boolean isNumInRowPossibility(int numberToCheck, int rowToCheck){
@@ -338,28 +417,71 @@ public class SudokuGrid {
             if (possAnsList.size() != 0 ) {
                 for (int k = 0; k < possAnsList.size(); k++) {
                     if (numberToCheck == possAnsList.get(k)) {
-                        return True;
+                        return true;
                         }
                     }
                 }
             squareID += 1;
                 }
-        return False; //Check this.
+        return false; //Check this.
                 
 
+    }
+
+    /**
+     *
+     * @param numberToCheck
+     * @param rowToCheck
+     * @return
+     */
+    private boolean isNumUniqueInRowPossibilities(int numberToCheck, int rowToCheck){
+        int squareID = mapRowStartToSquareID(rowToCheck);
+        ArrayList<Integer> possAnsList;
+        int numberFrequency = 0;
+
+        for (int column = 0; column <= 8; column++) {
+            possAnsList = navToSquare(squareID).getPossibleAnswers();
+            if (possAnsList.size() != 0 ) {
+                for (int k = 0; k < possAnsList.size(); k++) {
+                    if (numberToCheck == possAnsList.get(k)) {
+                        numberFrequency += 1;
+                    }
+                }
             }
+            squareID += 1;
+        }
+        if (numberFrequency == 1){
+            return true;
+        }
+        else {
+            return false; //Check this.
+        }
+
+    }
+
+    private boolean isNumUniqueONLYInRowPossibilities(int numberToCheck, int rowToCheck, int columnToCheck, int boxToCheck){
+        if ( (isNumUniqueInRowPossibilities(numberToCheck, rowToCheck) == true )
+                && (isNumUniqueInColumnPossibilities(numberToCheck,columnToCheck) == false)
+                && (mapBoxNumberToSudokuBox(boxToCheck).isNumUniqueInBoxPossibilities(numberToCheck) == false)
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     private boolean isNumInCol(int numberToCheck, int columnToCheck) {
         int squareID = mapColumnStartToSquareID(columnToCheck);
 
         for (int row = 0; row <= 8; row++) {
             if ( numberToCheck == navToSquare(squareID).getAnswer() ) {
-                return True;
+                return true;
             } else {
                 squareID += 9; //We are going down the column, so it's plus 9 every time.
             }
-            return False;
         }
+        return false;
     }
 
     private boolean isNumInColPossibility(int numberToCheck, int columnToCheck) {
@@ -371,17 +493,102 @@ public class SudokuGrid {
             if (possAnsList.size() != 0) {
                 for (int k = 0; k < possAnsList.size(); k++){
                     if (numberToCheck == possAnsList.get(k)){
-                        return True;
+                        return true;
                     }
                 }
             }
             squareID += 9; //We are going down the column, so it's plus 9 every time.
         }
-        return False;//Check this.
+        return false;//Check this.
     }
 
+    /**
+     *
+     * @param numberToCheck
+     * @param columnToCheck
+     * @return
+     */
+    private boolean isNumUniqueInColumnPossibilities(int numberToCheck, int columnToCheck){
+        int squareID = mapColumnStartToSquareID(columnToCheck);
+        ArrayList<Integer> possAnsList;
+        int numberFrequency = 0;
+        for (int row = 0; row <=8; row++){
+            possAnsList = navToSquare(squareID).getPossibleAnswers();
+            if (possAnsList.size() != 0) {
+                for (int k = 0; k < possAnsList.size(); k++){
+                    if (numberToCheck == possAnsList.get(k)){
+                        numberFrequency += 1;
+                    }
+                }
+            }
+            squareID += 9; //We are going down the column, so it's plus 9 every time.
+        }
+        if (numberFrequency == 1){
+            return true;
+        }
+        else{
+            return false;//Check this.
+        }
+    }
+
+
+    public void resetGrid(){
+
+    }
+
+    /**
+     * This function takes a box number in the sudoku grid and returns the actual SudokuBox object for that box number.
+     * @param boxNumber: An integer number between 0 and 1 inclusive that represents the box number in a sudoku grid. From top to bottom, left to right, the
+     *                 sudoku boxes are numbered 0, 1, 2, ... etc.
+     * @return: A SudokuBox object represented by the box number.
+     */
+    private SudokuBox mapBoxNumberToSudokuBox(int boxNumber){
+        if (boxNumber == 0) {return this.sudokuBox_0;}
+        else if (boxNumber == 1) {return this.sudokuBox_1;}
+        else if (boxNumber == 2) {return this.sudokuBox_2;}
+        else if (boxNumber == 3) {return this.sudokuBox_3;}
+        else if (boxNumber == 4) {return this.sudokuBox_4;}
+        else if (boxNumber == 5) {return this.sudokuBox_5;}
+        else if (boxNumber == 6) {return this.sudokuBox_6;}
+        else if (boxNumber == 7) {return this.sudokuBox_7;}
+        else {return this.sudokuBox_8;}//Ok for last one?
+    }
+
+    /**
+     *
+     * @param squareID
+     * @param answerToAdd
+     */
+    private void changeAnswerAndNarrowGridPossibilities(int squareID, int answerToAdd){
+        navToSquare(squareID).changeAnswer(answerToAdd);
+        /*TODO There's something wrong here with squareID's 78 and 71. Their possible answers are in the same location,
+           TODO but it should not be the case when squareID is 71 and answerToAdd is 3.
+
+         */
+        navToSquare(squareID).clearPossibleAnswers();
+        //Now remove the possibility from row, clomun, and box that this square belongs to.
+        removePossibilityFromRowWithSquareID(answerToAdd, squareID);
+        removePossibilityFromColWithSquareID(answerToAdd, squareID);
+        mapBoxNumberToSudokuBox(navToSquare(squareID).getBoxNumber()).removePossibilityFromBox(answerToAdd);
+    }
 ///
-    public void solveGrid(){
+    private void removePossibilityFromColWithSquareID(int possibilityToRemove, int squareID){
+        int squareIDColStart = mapColumnStartToSquareID(mapSquareIDtoColumn(squareID));
+        int limit = squareIDColStart + 72;
+        for (int i = squareIDColStart; i <= limit; i += 9){
+            navToSquare(i).removePossibleAnswer(possibilityToRemove);
+        }
+    }
+
+    private void removePossibilityFromRowWithSquareID(int possibilityToRemove, int squareID){
+        int squareIDRowStart = mapRowStartToSquareID(mapSquareIDtoRowNumber(squareID));
+        int limit = squareIDRowStart + 8;
+        for (int i = squareIDRowStart; i <= limit; i++){
+            navToSquare(i).removePossibleAnswer(possibilityToRemove);
+        }
+    }
+
+    public void solveGrid() {
 
         //First, make all the possibilities for every small square in the grid for the first time.
 
@@ -389,125 +596,87 @@ public class SudokuGrid {
         //First check, what answers are in the row, what answers are in the column, and what answers are in the box. Do
         //not write duplicates.
 
-        for (int squareNumber = 0; squareNumber <= 80; squareNumber++) { //For every square in the grid...
-            ArrayList<Integer> rowAnswers = ArrayList<Integer>(); //make an empty row answer list...
-            ArrayList<Integer> columnAnswers = ArrayList<Integer>();//make an empty column answer list...
-            ArrayList<Integer> boxAnswers = ArrayList<Integer>();//make an empty box answer list...
+        for (int squareID = 0; squareID <= 80; squareID++) { //For every square in the grid...
+            if (navToSquare(squareID).getAnswer() == -1) { //If the answer is the square is empty (equals -1)...
+                TreeSet<Integer> setOfPossibilities = new TreeSet<Integer>(); //Make an empty set for all possible answers of the small square.
+                //If we add to this set, it will help prevent duplicate values being added
+                //to it.
 
-            //First get row answers
-            for (int numberToCheck = 1; numberToCheck <= 9; numberToCheck++){ //For every potential answer (1 - 9)
-                if (navToSquare(squareNumber).getAnswer() == numb)//See if that number is in the row of the square
+                for (int number = 1; number <= 9; number++) {//For every number 1 to 9 inclusive...
+                    //Check row
+                    int rowNumber = mapSquareIDtoRowNumber(squareID);//Get the row number from the squareID.
+                    if (isNumInRow(number, rowNumber) == false) {//If the number is not an answer in the row...
+                        //Check column
+                        int colNumber = mapSquareIDtoColumn(squareID);//Get the column number from the squareID.
+                        if (isNumInCol(number, colNumber) == false) {//If the number is not an answer in the column...
+                            //Check box
+                            int boxNumber = navToSquare(squareID).getBoxNumber(); //Get box number of the square with the current squareID.
+                            SudokuBox boxToAnalyze = mapBoxNumberToSudokuBox(boxNumber);//Get the SudokuBox object that is represented by the box number.
+                            if (boxToAnalyze.isNumberInBox(number) == false) {//If the number is not an answer in the SudokuBox object...
+                                setOfPossibilities.add(number);//Add the number to the current set of possibilities for this square.
+                                //As this is a set, it will not add duplicates if one already
+                                //exists in the set.
 
-            }
-        }
-
-
-
-
-
-
-
-        //Then, if any possibility in any square is 1, then that is the answer for that square. Write it as
-        //that square's answer. (When you write an answer to a square, make sure you eliminate it from the
-        //row, column and box possibilities for every small square.) Then, recheck if any possibility in the square is one.
-        //IF NOT:
-        //Then see if there is a unique number in the possibility for row, column, and box. If yes, then that is the answer
-        //for that square. Use the function to write the answer to the grid and eliminating it from the other possibilities.
-
-        boolean box0Solved = False;
-        boolean box1Solved = False;
-        boolean box2Solved = False;
-        boolean box3Solved = False;
-        boolean box4Solved = False;
-        boolean box5Solved = False;
-        boolean box6Solved = False;
-        boolean box7Solved = False;
-        boolean box8Solved = False;
-        //FINISH
-
-        
-
-
-    }
-
-     //END CLASS CLOSING
-    }
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-    public boolean isNumInRowAns(int row, int number)
-    {
-        if (row == 0) {
-            for (int i = 0; i <= 8; i++) {
-                int answer = navToSquare(i).getAnswer();
-                if (number == answer) {
-                    return True;
+                            }
+                        }
+                    }
                 }
-            }
-        }
-        if (row = 1) {
-            for (int i = 9; i <= 17; i++) {
-                int answer = navToSquare(i).getAnswer();
-                if (number == answer) {
-                    return True;
+                //After you have obtained all the possibilities for this current square...
+                ArrayList<Integer> newList = new ArrayList<Integer>();//Make a new empty ArrayList.
+                Iterator it = setOfPossibilities.iterator();//Use the Iterator on the setOfPossibilities set.
+                while (it.hasNext()) {//While there is a next item in the setOfPossibilities set...
+                    Integer possAnswer = (Integer) it.next();//Get that integer possibility.
+                    if (setOfPossibilities.size() == 1) {//If the size of the setOfPossibilities is 1...
+                        navToSquare(squareID).changeAnswer(possAnswer);//Make the integer possibility the answer for that small square.
+                        navToSquare(squareID).clearPossibleAnswers();//Clear all of the possible answers for that square.
+                    } else {//If the size of the setOfPossibilities is not equal to 1...
+                        newList.add(possAnswer);//Add the integer possibility to the new ArrayList.
+                    }
+                }
+                if (setOfPossibilities.size() != 1) {//If the size of the setOfPossibilities does not equal 1...
+                    navToSquare(squareID).replacePossibleAnswerList(newList);//Replace the square's listOfPossibilities with the new ArrayList.
                 }
             }
         }
 
+        while (isGridFull() == false) {//While the sudoku grid still has empty squares...
 
-        return False;
+            //For a possibility in a square, if number is unique in the row (there is only one of them, and thus would be in
+                // the current square), then it goes in the current square.
+            for (int squareID = 0; squareID <= 80; squareID++) {
 
-*/
+                for (int i = 0; i < navToSquare(squareID).getPossibleAnswers().size(); i++) {
+                    int possibilityExamining = navToSquare(squareID).getPossibleAnswers().get(i);
+                    int rowToCheck = mapSquareIDtoRowNumber(squareID);
+                    int columnToCheck = mapSquareIDtoColumn(squareID);
+                    int boxNumberToCheck = navToSquare(squareID).getBoxNumber();
+                    SudokuBox boxToAnalyze = mapBoxNumberToSudokuBox(boxNumberToCheck);
 
-
-        /*
-        if (row < 3)
-        {
-            if
-            (
-                    (theSudokuGrid.get(0).getSmallSquare(0).getAns() == number)
-                            || (theSudokuGrid.get(0).getSmallSquare(1).getAns() == number)
-                            || (theSudokuGrid.get(0).getSmallSquare(2).getAns() == number)
-            )
-                return true
-        }
-
-        else if ( (row >=3) && (row < 6) )
-        {
-            if
-            (
-                    (theSudokuGrid.get(0).getSmallSquare(0).getAns() == number) || (theSudokuGrid.get(0).getSmallSquare(1).getAns() == number) || (theSudokuGrid.get(0).getSmallSquare(2).getAns() == number)
-            )
-                return true
-        }
-
-        else if ( (row >=6) && (row < 9) )
-        {
-
+                    if (isNumUniqueInRowPossibilities(possibilityExamining, rowToCheck) == true){
+                        changeAnswerAndNarrowGridPossibilities(squareID, possibilityExamining);
+                    }
+                    else{
+                        if (isNumUniqueInColumnPossibilities(possibilityExamining, columnToCheck) == true){
+                            changeAnswerAndNarrowGridPossibilities(squareID,possibilityExamining);
+                        }
+                        else{
+                            if (boxToAnalyze.isNumUniqueInBoxPossibilities(possibilityExamining) == true){
+                                changeAnswerAndNarrowGridPossibilities(squareID, possibilityExamining);
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-/*
-    public boolean numberIsInColumnAnswer(int column, int number)
-
-    public boolean numberIsInBoxAnswer(int boxNumber, int number)
-
-    public boolean numberIsInRowPossibilities
-
-    public boolean numberIsInColumnPossibilities
-
-    public boolean numberIsInBoxPossibilities
-
-    public ... getBox()
 }
-*/
-}
+
+
+
+
+
+
+
+
+
+
