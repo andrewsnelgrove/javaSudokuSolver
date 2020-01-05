@@ -1,4 +1,4 @@
-package com.andrewsnelgrove;
+package com.javaSudokuSolverPackage;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,7 +9,7 @@ import java.util.Iterator;
  * answer, possible answers, and block number for the square.
  *
  * @author Andrew Snelgrove
- * @version Oct 26 2019
+ * @version Jan 5 2020
  */
 
 public class SmallestSudokuSquare {
@@ -17,17 +17,17 @@ public class SmallestSudokuSquare {
 
     private int rowNumber;
     private int columnNumber;
-    private int blockNumber;
+    private int boxNumber;
     private int answer;
     private ArrayList<Integer> possibleAnswers;
 
 
     /*------------------------------------CONSTRUCTOR-------------------------------------------*/
 
-    public SmallestSudokuSquare(int row, int column, int blockNumber) {
+    public SmallestSudokuSquare(int row, int column, int boxNumber) {
         this.rowNumber = row;
         this.columnNumber = column;
-        this.blockNumber = -1;
+        this.boxNumber = boxNumber;
         this.answer = -1;
         this.possibleAnswers = new ArrayList<Integer>();
     }
@@ -40,8 +40,8 @@ public class SmallestSudokuSquare {
      *
      * @return An integer representing the block number that the small square belongs to.
      */
-    public int getBlockNumber() {
-        return this.blockNumber;
+    public int getBoxNumber() {
+        return this.boxNumber;
     }
 
     /**
@@ -71,11 +71,11 @@ public class SmallestSudokuSquare {
     /**
      * This function changes the block number of the square.
      *
-     * @param newBlockNumber: An integer representing the block number.
+     * @param newBoxNumber: An integer representing the box number.
      */
 
-    public void changeBlockNumber(int newBlockNumber) {
-        this.blockNumber = newBlockNumber;
+    public void changeBlockNumber(int newBoxNumber) {
+        this.boxNumber = newBoxNumber;
     }
 
     /**
@@ -118,4 +118,15 @@ public class SmallestSudokuSquare {
         }
 
     }
+
+    //NEW
+    public void replacePossibleAnswerList(ArrayList<Integer> newList){
+        this.possibleAnswers = newList;
+    }
+    //New
+    public void clearPossibleAnswers(){
+        this.possibleAnswers.clear();
+    }
+
+
 }
