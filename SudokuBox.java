@@ -1,4 +1,4 @@
-package com.andrewsnelgrove;
+package com.javaSudokuSolverPackage;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * and a method to check if the entire box is filled with squares that each have an answer filled in already.
  *
  * @author Andrew Snelgrove
- * @version Oct 26 2019
+ * @version Jan 5 2020
  */
 
 public class SudokuBox
@@ -113,11 +113,10 @@ public class SudokuBox
     public boolean isNumberInBox(int numberToCheck) {
         for (SmallestSudokuSquare smallSquare : this.sudokuBox) {
             if (smallSquare.getAnswer() == numberToCheck) {
-                return True;
+                return true;
             }
-            return False;
-
         }
+        return false;
     }
 
 
@@ -128,12 +127,33 @@ public class SudokuBox
             if (possAnsList.size() != 0) {
                 for (int k = 0; k < possAnsList.size(); k++){
                     if (possAnsList.get(k) == numberToCheck) {
-                        return True;
+                        return true;
                     }
                 }
             }
         }
-        return False;
+        return false;
+    }
+
+    public boolean isNumUniqueInBoxPossibilities(int numberToCheck){
+        ArrayList<Integer> possAnsList;
+        int numberFrequency = 0;
+        for (SmallestSudokuSquare smallSquare : this.sudokuBox) {
+            possAnsList = smallSquare.getPossibleAnswers();
+            if (possAnsList.size() != 0) {
+                for (int k = 0; k < possAnsList.size(); k++){
+                    if (possAnsList.get(k) == numberToCheck) {
+                        numberFrequency += 1;
+                    }
+                }
+            }
+        }
+        if (numberFrequency == 1){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public boolean isWholeBoxSolved(){
@@ -144,10 +164,24 @@ public class SudokuBox
             }
         }
         if (filledCount == 9){
-            return True;
+            return true;
         }
         else {
-            return False;
+            return false;
         }
     }
+
+    public void generateBoxPossibilities(){
+        for (SmallestSudokuSquare smallSquare : this.sudokuBox){
+
+        }
+    }
+
+    public void removePossibilityFromBox(int possibilityToRemove){
+        for (SmallestSudokuSquare smallSquare : this.sudokuBox){
+            smallSquare.removePossibleAnswer(possibilityToRemove);
+        }
+    }
+
+
 }
