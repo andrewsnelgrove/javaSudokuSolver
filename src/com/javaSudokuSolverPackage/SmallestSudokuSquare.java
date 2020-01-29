@@ -9,7 +9,7 @@ import java.util.Iterator;
  * answer, possible answers, and block number for the square.
  *
  * @author Andrew Snelgrove
- * @version Jan 5 2020
+ * @version Jan 22 2020
  */
 
 public class SmallestSudokuSquare {
@@ -119,11 +119,19 @@ public class SmallestSudokuSquare {
 
     }
 
-    //NEW
+    /**
+     * This function replaces the ArrayList<Integer> containing the integer possible answers for this square with an
+     * inputted ArrayList<Integer> list.
+     *
+     * @param newList: An ArrayList<Integer>
+     */
     public void replacePossibleAnswerList(ArrayList<Integer> newList){
         this.possibleAnswers = newList;
     }
-    //New
+
+    /**
+     * This function clears all possible answers associated with this square.
+     */
     public void clearPossibleAnswers(){
         this.possibleAnswers.clear();
     }

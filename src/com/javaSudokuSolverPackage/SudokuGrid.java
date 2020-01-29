@@ -2,9 +2,21 @@ package com.javaSudokuSolverPackage;
 
 import java.util.*;
 
+/**
+ * This class describes one of 9 sudoku 3x3 grids, numbered from 0 to 9, left to right, top to bottom, on a
+ * Sudoku grid. In the game of Sudoku, these grids must only contain one instance of each of the numbers 1 to 9
+ * inclusive.
+ *
+ * @author Andrew Snelgrove
+ * @version Jan 22 2020
+ */
+
 
 public class SudokuGrid {
-    //Fields
+    /*---------------------------------------FIELDS-------------------------------------------*/
+    /**
+     * These HashSets set up
+     */
     private static final Set<Integer> column0 = new HashSet<Integer>(Arrays.asList(0,  9, 18, 27, 36, 45, 54, 63, 72));
     private static final Set<Integer> column1 = new HashSet<Integer>(Arrays.asList(1, 10, 19, 28, 37, 46, 55, 64, 73));
     private static final Set<Integer> column2 = new HashSet<Integer>(Arrays.asList(2, 11, 20, 29, 38, 47, 56, 65, 74));
@@ -30,7 +42,7 @@ public class SudokuGrid {
 
 
 
-    //Initializer
+    /*------------------------------------CONSTRUCTOR-------------------------------------------*/
     public SudokuGrid() {
         this.theSudokuGrid = new ArrayList<SudokuBox>();
 
@@ -59,7 +71,7 @@ public class SudokuGrid {
 
 
 
-    //Methods
+    /*------------------------------------METHODS-------------------------------------------*/
 
     /**
      * This function takes a square ID and answer for the square, and changes the current answer of the square to the

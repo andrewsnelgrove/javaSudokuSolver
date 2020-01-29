@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * and a method to check if the entire box is filled with squares that each have an answer filled in already.
  *
  * @author Andrew Snelgrove
- * @version Jan 5 2020
+ * @version Jan 22 2020
  */
 
 public class SudokuBox
@@ -74,7 +74,7 @@ public class SudokuBox
         this.sudokuBox.add(square_8);
     }
 
-    /*------------------------------------ACCESSORS-------------------------------------------*/
+    /*------------------------------------METHODS-------------------------------------------*/
 
     /**
      * This method accepts a square number for a small square inside the sudoku box, and returns the small square object
@@ -110,6 +110,13 @@ public class SudokuBox
         return true;
     }
 
+    /**
+     * This method checks if the given integer number is in this sudoku box as a written answer in the box's
+     * squares.
+     * @param numberToCheck: The integer number to check if it is in this sudoku box.
+     * @return true if numberToCheck is written as an answer for a square in the sudoku box, false if not.
+     */
+
     public boolean isNumberInBox(int numberToCheck) {
         for (SmallestSudokuSquare smallSquare : this.sudokuBox) {
             if (smallSquare.getAnswer() == numberToCheck) {
@@ -119,6 +126,14 @@ public class SudokuBox
         return false;
     }
 
+    /**
+     * This method checks if the given integer number is listed as a possible answer already in any of the squares
+     * in this sudoku box.
+     *
+     * @param numberToCheck: An integer number
+     * @return True if numberToCheck is written already as a possible answer in any of the squares in this sudoku box,
+     * false if not.
+     */
 
     public boolean isNumInBoxPossibility(int numberToCheck) {
         ArrayList<Integer> possAnsList;
@@ -134,6 +149,14 @@ public class SudokuBox
         }
         return false;
     }
+
+    /**
+     * This method checks if the given integer number is listed ONLY ONCE in any of the possible answers for any
+     * square in this sudoku box.
+     * @param numberToCheck: An integer number.
+     * @return: True if numberToCheck is listed ONLY ONCE in any of the possible answers for any square in this
+     * sudoku box, False if not.
+     */
 
     public boolean isNumUniqueInBoxPossibilities(int numberToCheck){
         ArrayList<Integer> possAnsList;
@@ -156,6 +179,11 @@ public class SudokuBox
         }
     }
 
+    /**
+     * This method checks if all the squares in this sudoku box has a written answer.
+     * @return True if all the squares in this sudoku box has a written answer, False if not.
+     */
+
     public boolean isWholeBoxSolved(){
         int filledCount = 0;
         for (SmallestSudokuSquare smallSquare : this.sudokuBox){
@@ -171,11 +199,11 @@ public class SudokuBox
         }
     }
 
-    public void generateBoxPossibilities(){
-        for (SmallestSudokuSquare smallSquare : this.sudokuBox){
-
-        }
-    }
+    /**
+     * This method removes a given integer in every square's possible answer list in the sudoku box, if it exists
+     * in the square's possible answer list.
+     * @param possibilityToRemove: An integer number.
+     */
 
     public void removePossibilityFromBox(int possibilityToRemove){
         for (SmallestSudokuSquare smallSquare : this.sudokuBox){

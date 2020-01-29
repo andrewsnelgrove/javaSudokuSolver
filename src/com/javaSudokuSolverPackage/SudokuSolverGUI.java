@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 
 //TODO Write documentation.
 public class SudokuSolverGUI extends JFrame {
-
+    /*---------------------------------------FIELDS-------------------------------------------*/
             private Container mainPane;
             private JMenuBar menuBar;
             private JMenu menu;
@@ -23,7 +23,7 @@ public class SudokuSolverGUI extends JFrame {
             private JOptionPane answerOptionPane;
             private JLabel answerOptionPaneLabel;
 
-
+    /*------------------------------------CONSTRUCTOR-------------------------------------------*/
             public SudokuSolverGUI() {
                 super();
                 mainPane = getContentPane();
@@ -47,6 +47,7 @@ public class SudokuSolverGUI extends JFrame {
 
 
             }
+    /*------------------------------------METHODS-------------------------------------------*/
 
             private void initializeMenuBar() {
                 menuBar = new JMenuBar();
